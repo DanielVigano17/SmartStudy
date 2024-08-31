@@ -1,10 +1,32 @@
+"use client"
 import Link from "next/link"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
-import { Checkbox } from "@/components/ui/checkbox"
 import { Button } from "@/components/ui/button"
+import actionLogin from "../action/actionLogin"
+import { useForm } from "react-hook-form"
+import { useToast } from "@/components/ui/use-toast"
+import { ToastAction } from "@/components/ui/toast"
 
 export default function AuthForm() {
+  const { toast } = useToast()
+  const form = useForm();
+
+  const handleSubmit = form.handleSubmit(async (data) =>
+  {
+    console.log(data)
+    await actionLogin(data.email);
+
+    toast({
+      title: "Magic Link enviado para seu email",
+      description: "Vá para sua caixa de email e faça login através do link",
+      action: (
+        <ToastAction altText="Confirmar">Ok</ToastAction>
+      )
+    })
+
+  });
+   
   return (
     <div className="flex min-h-[100dvh] items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
       <div className="w-full max-w-md space-y-8">
@@ -19,7 +41,7 @@ export default function AuthForm() {
             </Link>
           </p>
         </div>
-        <form className="space-y-6" action="#" method="POST">
+        <form className="space-y-6" onSubmit={handleSubmit} action="#" method="POST">
           <div>
             <Label htmlFor="email" className="block text-sm font-medium text-muted-foreground">
               Email
@@ -27,46 +49,13 @@ export default function AuthForm() {
             <div className="mt-1">
               <Input
                 id="email"
-                name="email"
                 type="email"
+                {... form.register("email")}
                 autoComplete="email"
                 required
                 className="block w-full rounded-md border-input bg-background px-3 py-2 text-foreground shadow-sm focus:border-primary focus:ring-primary"
-                placeholder="you@example.com"
+                placeholder="seuemail@exemplo.com"
               />
-            </div>
-          </div>
-          <div>
-            <Label htmlFor="password" className="block text-sm font-medium text-muted-foreground">
-              Senha
-            </Label>
-            <div className="mt-1">
-              <Input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                className="block w-full rounded-md border-input bg-background px-3 py-2 text-foreground shadow-sm focus:border-primary focus:ring-primary"
-                placeholder="Password"
-              />
-            </div>
-          </div>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <Checkbox
-                id="remember-me"
-                name="remember-me"
-                className="h-4 w-4 rounded border-input text-primary focus:ring-primary"
-              />
-              <Label htmlFor="remember-me" className="ml-2 block text-sm text-muted-foreground">
-                Permanecer Conectado
-              </Label>
-            </div>
-            <div className="text-sm">
-              <Link href="#" className="font-medium text-primary hover:text-primary/80" prefetch={false}>
-                Esqueceu a senha?
-              </Link>
             </div>
           </div>
           <div>
