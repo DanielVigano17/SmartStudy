@@ -14,7 +14,6 @@ export function MainSidebar({ user }: MainSidebarProps) {
   const pathname = usePathname()
 
   const isActive = (path: string) => {
-    console.log(pathname);
     return pathname === path
   }
 

@@ -2,6 +2,8 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { auth } from "../../../services/auth";
 import ButtonSignOut from "./_components/ButtonSignOut";
 import { PageModel, PageModelHeader, PageModelHeaderTitle, PageModelMain } from "@/components/dashboard/pageModel";
+import { DataTableDemo } from "./_components/data-table-home";
+import { FormCreateMateriaDialog } from "./_components/form-dialog";
 
 export default async function Home()
 {
@@ -11,9 +13,10 @@ export default async function Home()
         <PageModel className="h-screen">
             <PageModelHeader>
                 <PageModelHeaderTitle>Home</PageModelHeaderTitle>
+                <FormCreateMateriaDialog/>
             </PageModelHeader>
-            <PageModelMain className="flex items-center justify-center">
-                <h1>Home Teste</h1>
+            <PageModelMain>
+                <DataTableDemo/>
             </PageModelMain>
         </PageModel>
     )

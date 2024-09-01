@@ -14,7 +14,7 @@ export default function AuthForm() {
 
   const handleSubmit = form.handleSubmit(async (data) =>
   {
-    console.log(data)
+    
     await actionLogin(data.email);
 
     toast({
@@ -62,8 +62,9 @@ export default function AuthForm() {
             <Button
               type="submit"
               className="flex w-full justify-center rounded-md bg-primary px-3 py-2 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              disabled={form.formState.isSubmitting}
             >
-              Sign in
+              {form.formState.isSubmitting ? "Enviando..." : "Sign In"}
             </Button>
           </div>
         </form>
