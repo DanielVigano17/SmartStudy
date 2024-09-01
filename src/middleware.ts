@@ -13,17 +13,16 @@ export default function middleware (req : NextRequest)
 
   if(pathname == "/login" && token?.value)
   {
-    return NextResponse.redirect(new URL(getUrl("/home")));
+    return NextResponse.redirect(new URL(getUrl("/intern/home")));
   }
 
-  if(pathname == "/home" && !token)
+  if(pathname.includes("/intern") && !token)
   {
     return NextResponse.redirect(new URL(getUrl("/login")));
   }
 
 };
- 
-// Optionally, don't invoke Middleware on some paths
+
 export const config = {
   matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 }

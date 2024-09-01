@@ -6,7 +6,7 @@ export default async function actionLogin(email : string)
    {
       try
       {
-        await signIn("nodemailer", {email : email, redirectTo : "/home"});
+        await signIn("nodemailer", {email : email, redirectTo : "/intern/home"});
         
       }
       catch(error)
