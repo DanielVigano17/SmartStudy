@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation'
 import { HomeIcon, MixerVerticalIcon } from '@radix-ui/react-icons'
 import { Session } from 'next-auth'
-import { DashboardSidebar, DashboardSidebarFooter, DashboardSidebarHeader, DashboardSidebarMain, DashboardSidebarNav, DashboardSidebarNavHeader, DashboardSidebarNavHeaderTitle, DashboardSidebarNavLink, DashboardSidebarNavMain } from '@/components/ui/dashboard/dashboardSideBar'
+import { DashboardSidebar, DashboardSidebarFooter, DashboardSidebarHeader, DashboardSidebarMain, DashboardSidebarNav, DashboardSidebarNavHeader, DashboardSidebarNavHeaderTitle, DashboardSidebarNavLink, DashboardSidebarNavMain } from '@/components/dashboard/dashboardSideBar'
 import { UserDropdown } from './user-dropdown'
 
 type MainSidebarProps = {
