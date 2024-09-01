@@ -16,6 +16,6 @@ secret : process.env.NEXTAUTH_SECRET,
 pages: {
     signIn: '/login',   // Verifique se está correta  
     verifyRequest: '/login', // Onde é verificado 
-    newUser: "/app",
+    newUser: "/home",
   },
 })
